@@ -49,6 +49,9 @@ logs/execution_*.log
 output/summaries/*.md
 output/summaries/*.html
 
+# Claude Code settings (local configuration with secrets)
+.claude/settings.local.json
+
 # OS
 .DS_Store
 Thumbs.db
