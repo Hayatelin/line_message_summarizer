@@ -4,9 +4,11 @@ import logging
 import asyncio
 from typing import Dict
 from pathlib import Path
-from linebot import LineBotApi
-from linebot.exceptions import LineBotApiError
-from linebot.models import TextSendMessage
+from linebot.v3.messaging import (
+    ApiClient, Configuration, MessagingApi,
+    PushMessageRequest, TextMessage
+)
+from linebot.v3.messaging.exceptions import ApiException
 
 logger = logging.getLogger(__name__)
 
@@ -29,7 +31,9 @@ class LineSender:
         if not channel_access_token:
             raise ValueError("Channel access token cannot be empty")
 
-        self.line_bot_api = LineBotApi(channel_access_token)
+        configuration = Configuration(access_token=channel_access_token)
+        self.api_client = ApiClient(configuration)
+        self.messaging_api = MessagingApi(self.api_client)
         logger.info("LineSender initialized")
 
     async def send_summary(
@@ -74,15 +78,20 @@ class LineSender:
         # 重試發送
         for attempt in range(max_retries):
             try:
-                message = TextSendMessage(text=simplified_content)
-                self.line_bot_api.push_message(user_id, message)
+                # 建立 v3 格式的消息
+                text_message = TextMessage(text=simplified_content)
+                push_request = PushMessageRequest(
+                    to=user_id,
+                    messages=[text_message]
+                )
+                self.messaging_api.push_message(push_request)
 
                 logger.info(
                     f"Summary sent successfully to {user_id}"
                 )
                 return True
 
-            except LineBotApiError as e:
+            except ApiException as e:
                 logger.warning(
                     f"API error on attempt {attempt + 1}/{max_retries}: {e}"
                 )
