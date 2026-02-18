@@ -6,8 +6,8 @@ from typing import List, Dict
 from datetime import datetime
 import pytz
 
-from linebot import LineBotApi
-from linebot.exceptions import LineBotApiError
+from linebot.v3.messaging import ApiClient, Configuration, MessagingApi
+from linebot.v3.messaging.exceptions import ApiException
 
 logger = logging.getLogger(__name__)
 
@@ -33,7 +33,9 @@ class LineHandler:
         if not channel_access_token:
             raise ValueError("Channel access token cannot be empty")
 
-        self.line_bot_api = LineBotApi(channel_access_token)
+        configuration = Configuration(access_token=channel_access_token)
+        self.api_client = ApiClient(configuration)
+        self.messaging_api = MessagingApi(self.api_client)
         logger.info("LineHandler initialized successfully")
 
     async def get_group_members(self, group_id: str) -> Dict[str, str]:
@@ -46,7 +48,7 @@ class LineHandler:
             字典，格式: {"U123...": "Alice", "U456...": "Bob", ...}
 
         Raises:
-            LineBotApiError: API 調用失敗時
+            ApiException: API 調用失敗時
             Exception: 其他異常
         """
         logger.info(f"Fetching group members for group: {group_id}")
@@ -54,18 +56,28 @@ class LineHandler:
         try:
             members_map = {}
 
-            # 取得群組成員 ID 列表
-            member_ids = self.line_bot_api.get_group_member_ids(group_id)
+            # 取得群組成員 ID 列表（支持分頁）
+            member_ids = []
+            response = self.messaging_api.get_group_members_ids(group_id)
+            member_ids.extend(response.member_ids)
+
+            # 處理分頁（next token）
+            while response.next:
+                response = self.messaging_api.get_group_members_ids(
+                    group_id,
+                    start=response.next
+                )
+                member_ids.extend(response.member_ids)
 
             # 逐個獲取成員資料
             for member_id in member_ids:
                 try:
-                    profile = self.line_bot_api.get_group_member_profile(
+                    profile = self.messaging_api.get_group_member_profile(
                         group_id,
                         member_id
                     )
                     members_map[member_id] = profile.display_name
-                except LineBotApiError as e:
+                except ApiException as e:
                     logger.warning(
                         f"Failed to get profile for {member_id}: {e}"
                     )
@@ -76,7 +88,7 @@ class LineHandler:
             )
             return members_map
 
-        except LineBotApiError as e:
+        except ApiException as e:
             logger.error(f"LINE API error when fetching members: {e}")
             raise
         except Exception as e:
@@ -132,7 +144,7 @@ class LineHandler:
             )
             return messages
 
-        except LineBotApiError as e:
+        except ApiException as e:
             logger.error(f"LINE API error when fetching messages: {e}")
             raise
         except Exception as e:

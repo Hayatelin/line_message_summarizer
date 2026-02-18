@@ -1,0 +1,9 @@
+line-bot-sdk>=3.22.0
+anthropic
+pytz
+jieba
+schedule
+aiohttp
+pytest>=7.4.3
+pytest-asyncio>=0.21.1
+python-dotenv

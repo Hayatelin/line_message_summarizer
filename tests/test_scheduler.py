@@ -56,7 +56,7 @@ class TestLineSender:
         sender = LineSender("test_token")
 
         # Mock the LINE API
-        with patch.object(sender.line_bot_api, 'push_message') as mock_push:
+        with patch.object(sender.messaging_api, 'push_message') as mock_push:
             result = await sender.send_summary("U123", str(summary_file))
 
             # Should have called push_message
@@ -76,7 +76,7 @@ class TestLineSender:
         sender = LineSender("test_token")
 
         # Mock the LINE API
-        with patch.object(sender.line_bot_api, 'push_message') as mock_push:
+        with patch.object(sender.messaging_api, 'push_message') as mock_push:
             result = await sender.send_batch_summaries("U123", str(tmp_path))
 
             # Should have results for both files
