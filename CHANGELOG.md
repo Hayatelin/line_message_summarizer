@@ -24,12 +24,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Type Safety**: Full type hints and Pydantic v2 validation throughout codebase
 - **Version Documentation**: Version badges and history section in README
 - **requirements.txt**: New dependency file with all project dependencies
+- **Windows Deployment Simplification**: One-click PowerShell setup scripts for Windows users
+  - `setup_windows.ps1`: Automated virtual environment, dependency installation, and .env generation
+  - `schedule_task.ps1`: Automated Windows Task Scheduler configuration (admin required)
+  - `run_manual.ps1`: Manual pipeline execution for testing
+  - `WINDOWS_DEPLOYMENT.md`: Complete Windows deployment guide with troubleshooting
+  - `WINDOWS_QUICK_START.md`: 5-minute Windows setup reference card
 
 ### Changed
 - `src/utils/line_handler.py`: Migrated to v3 API (Configuration + ApiClient + MessagingApi)
 - `src/utils/sender.py`: Updated to v3 message format (TextMessage + PushMessageRequest)
 - `tests/test_scheduler.py`: Updated mocks for v3 API
-- README.md and README.zh_TW.md: Updated with v3.0 information and version history
+- README.md and README.zh_TW.md: Updated with v3.0 information, version history, and Windows deployment guide
+- DEPLOYMENT_GUIDE.md: Added Windows deployment navigation and quick reference links
 - Technology stack documentation: Updated Python version to 3.13.12
 
 ### Fixed

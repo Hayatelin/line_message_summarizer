@@ -1,5 +1,11 @@
 # 🚀 LINE 訊息每日摘要系統 - 部署指南
 
+## 快速導航
+
+> 🪟 **Windows 用戶**：請參考 [WINDOWS_DEPLOYMENT.md](./WINDOWS_DEPLOYMENT.md) 獲得簡化的一鍵部署指南
+> 📝 **Linux 用戶**：繼續閱讀本文件的 systemd 部分
+> 🐳 **Docker 用戶**：參考本文件的 Docker 部分
+
 ## 系統概覽
 
 這是一個完整的 4-Agent 系統，用於自動爬蟲 LINE 群組訊息、進行清理處理、生成 AI 摘要，並每天 08:00 發送給用戶。

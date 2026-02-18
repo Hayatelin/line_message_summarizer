@@ -297,7 +297,24 @@ Reviewers will check:
 - Git
 - Virtual environment
 
-### Setup Steps
+### Quick Setup for Windows Users
+
+For Windows developers, use the automated setup script:
+
+```powershell
+# In PowerShell, navigate to project directory
+cd line_message_summarizer
+
+# Run one-click setup (creates venv, installs dependencies, generates .env)
+.\setup_windows.ps1
+
+# Edit .env with your credentials
+notepad .env
+```
+
+See [WINDOWS_DEPLOYMENT.md](../WINDOWS_DEPLOYMENT.md) for complete Windows setup guide.
+
+### Manual Setup Steps (All Platforms)
 
 ```bash
 # Clone the repository

@@ -218,13 +218,45 @@ line_message_summarizer/
 ├── output/
 │   └── summaries/                 # Agent 3 output
 ├── logs/                          # Execution logs
-├── DEPLOYMENT_GUIDE.md            # Deployment instructions
+├── DEPLOYMENT_GUIDE.md            # Deployment instructions (Linux/Docker)
+├── WINDOWS_DEPLOYMENT.md          # Windows deployment guide (NEW!)
+├── WINDOWS_QUICK_START.md         # Windows 5-minute setup reference (NEW!)
+├── setup_windows.ps1              # Windows one-click setup script (NEW!)
+├── schedule_task.ps1              # Windows Task Scheduler setup (NEW!)
+├── run_manual.ps1                 # Manual pipeline execution script (NEW!)
+├── run_manual.bat                 # Legacy batch script (NEW!)
 ├── requirements.txt               # Python dependencies
 ├── .env.example                   # Environment template
-└── README.md                      # This file
+├── CHANGELOG.md                   # Version history and release notes
+├── LICENSE                        # MIT License
+├── README.md                      # This file
+└── README.zh_TW.md                # Chinese version
 ```
 
 ## 🚢 Deployment
+
+### Windows (Simplified One-Click Setup)
+
+**New!** 🎉 Complete Windows deployment automation with PowerShell scripts.
+
+```powershell
+# 1. Run one-click setup (5 minutes)
+.\setup_windows.ps1
+
+# 2. Edit .env file with your API tokens
+# (Script generates template automatically)
+
+# 3. Configure Windows Task Scheduler (admin PowerShell)
+.\schedule_task.ps1
+```
+
+✅ Automatic virtual environment setup
+✅ Automatic dependency installation
+✅ Windows Task Scheduler configuration
+✅ Daily 08:00 execution
+
+**Quick reference:** [WINDOWS_QUICK_START.md](./WINDOWS_QUICK_START.md)
+**Full guide:** [WINDOWS_DEPLOYMENT.md](./WINDOWS_DEPLOYMENT.md)
 
 ### Development Environment
 
@@ -232,7 +264,7 @@ line_message_summarizer/
 python src/agent_scheduler.py
 ```
 
-### Production (systemd)
+### Production (Linux - systemd)
 
 See [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md) for complete systemd setup.
 
@@ -302,7 +334,14 @@ pytest tests/test_scheduler.py::TestLineSender -v
 
 ## 📚 Documentation
 
-- **[DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)** - Complete deployment guide for production
+### Deployment Guides
+- **[WINDOWS_QUICK_START.md](./WINDOWS_QUICK_START.md)** - 5-minute Windows setup reference (NEW!)
+- **[WINDOWS_DEPLOYMENT.md](./WINDOWS_DEPLOYMENT.md)** - Complete Windows deployment guide (NEW!)
+- **[DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)** - Linux (systemd) and Docker deployment
+
+### Project Documentation
+- **[CHANGELOG.md](./CHANGELOG.md)** - Version history and release notes
+- **[.github/CONTRIBUTING.md](./.github/CONTRIBUTING.md)** - Contributing guidelines
 - **[.claude/HANDOFF.md](./.claude/HANDOFF.md)** - Development session handoff notes
 - **[AGENT1-4_PROMPT.md](./AGENT1-4_PROMPT.md)** - Technical requirements for each agent
 

@@ -218,13 +218,45 @@ line_message_summarizer/
 ├── output/
 │   └── summaries/                 # Agent 3 輸出
 ├── logs/                          # 執行日誌
-├── DEPLOYMENT_GUIDE.md            # 部署指南
+├── DEPLOYMENT_GUIDE.md            # 部署指南（Linux/Docker）
+├── WINDOWS_DEPLOYMENT.md          # Windows 部署指南（新增！）
+├── WINDOWS_QUICK_START.md         # Windows 5 分鐘快速參考（新增！）
+├── setup_windows.ps1              # Windows 一鍵設置腳本（新增！）
+├── schedule_task.ps1              # Windows 工作排程器設置（新增！）
+├── run_manual.ps1                 # 手動執行管道腳本（新增！）
+├── run_manual.bat                 # 舊式批處理腳本（新增！）
 ├── requirements.txt               # Python 依賴
 ├── .env.example                   # 環境配置範本
+├── CHANGELOG.md                   # 版本歷史和發佈記錄
+├── LICENSE                        # MIT 許可證
+├── README.md                      # English 版本
 └── README.zh_TW.md                # 本文檔
 ```
 
 ## 🚢 部署方式
+
+### Windows（簡化一鍵部署）
+
+**新功能！** 🎉 完整的 Windows 部署自動化，使用 PowerShell 腳本。
+
+```powershell
+# 1. 執行一鍵設置（5 分鐘）
+.\setup_windows.ps1
+
+# 2. 編輯 .env 檔案填入 API Token
+# （腳本自動生成範本）
+
+# 3. 配置 Windows 工作排程器（需管理員 PowerShell）
+.\schedule_task.ps1
+```
+
+✅ 自動虛擬環境設置
+✅ 自動依賴安裝
+✅ Windows 工作排程器配置
+✅ 每天 08:00 自動執行
+
+**快速參考**：[WINDOWS_QUICK_START.md](./WINDOWS_QUICK_START.md)
+**完整指南**：[WINDOWS_DEPLOYMENT.md](./WINDOWS_DEPLOYMENT.md)
 
 ### 開發環境
 
@@ -232,7 +264,7 @@ line_message_summarizer/
 python src/agent_scheduler.py
 ```
 
-### 生產環境（systemd）
+### 生產環境（Linux - systemd）
 
 詳見 [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md) 中的完整 systemd 設定。
 
@@ -302,7 +334,14 @@ pytest tests/test_scheduler.py::TestLineSender -v
 
 ## 📚 文檔
 
-- **[DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)** - 完整部署指南
+### 部署指南
+- **[WINDOWS_QUICK_START.md](./WINDOWS_QUICK_START.md)** - Windows 5 分鐘快速參考（新增！）
+- **[WINDOWS_DEPLOYMENT.md](./WINDOWS_DEPLOYMENT.md)** - Windows 完整部署指南（新增！）
+- **[DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)** - Linux (systemd) 和 Docker 部署
+
+### 項目文檔
+- **[CHANGELOG.md](./CHANGELOG.md)** - 版本歷史和發佈記錄
+- **[.github/CONTRIBUTING.md](./.github/CONTRIBUTING.md)** - 貢獻指南
 - **[.claude/HANDOFF.md](./.claude/HANDOFF.md)** - 開發會話交接文檔
 - **[AGENT1-4_PROMPT.md](./AGENT1-4_PROMPT.md)** - 各 Agent 的技術要求
 
