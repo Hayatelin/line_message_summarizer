@@ -8,6 +8,8 @@
 
 📖 [English Version](./README.md) | [部署指南](./DEPLOYMENT_GUIDE.md)
 
+**🎉 最新更新**：升級到 LINE Bot SDK v3.0+，使用現代化 API、改進的分頁支持和完整的型別提示。
+
 ## ✨ 主要功能
 
 - **🤖 4-Agent 管道架構**：爬蟲、處理、摘要、排程四個獨立的微服務代理
@@ -19,6 +21,7 @@
 - **📊 全面的測試**：67 個單元測試，覆蓋率 >80%
 - **📈 效能指標**：典型管道執行時間 2-5 分鐘
 - **🔍 完整日誌記錄**：詳細的執行日誌和統計追蹤
+- **🔄 現代 SDK**：基於 LINE Bot SDK v3.0+ 的完整型別提示和分頁支持
 
 ## 🏗️ 系統架構
 
@@ -177,13 +180,13 @@ TIMEZONE=Asia/Taipei
 
 ## 🔧 技術棧
 
-- **Python**：3.8+ (在 3.11.9 上測試)
-- **LINE API**：line-bot-sdk 2.18.0+
-- **AI**：Anthropic Claude API
+- **Python**：3.8+ (在 3.13.12 上測試)
+- **LINE API**：line-bot-sdk 3.22.0+ (v3.0 現代化 API)
+- **AI**：Anthropic Claude API (最新)
 - **非同步**：asyncio (標準庫)
-- **排程**：schedule 1.2.0
+- **排程**：schedule 1.2.0+
 - **文本處理**：jieba (中文分詞)
-- **測試**：pytest, pytest-asyncio
+- **測試**：pytest 7.4.3+, pytest-asyncio 0.21.1+
 - **環境管理**：python-dotenv
 
 ## 📁 項目結構
