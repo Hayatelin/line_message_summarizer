@@ -8,6 +8,8 @@ An intelligent 4-Agent system that automatically crawls LINE group messages, pro
 
 📖 [中文版本](./README.zh_TW.md) | [部署指南](./DEPLOYMENT_GUIDE.md)
 
+**🎉 Latest Update**: Upgraded to LINE Bot SDK v3.0+ with modern API, improved pagination support, and full type hints.
+
 ## ✨ Features
 
 - **🤖 4-Agent Pipeline Architecture**: Separate microagents for crawling, processing, summarization, and scheduling
@@ -19,6 +21,7 @@ An intelligent 4-Agent system that automatically crawls LINE group messages, pro
 - **📊 Comprehensive Testing**: 67 unit tests with >80% code coverage
 - **📈 Performance Metrics**: Typical pipeline execution: 2-5 minutes
 - **🔍 Complete Logging**: Detailed execution logs and statistics tracking
+- **🔄 Modern SDK**: Built on LINE Bot SDK v3.0+ with full type hints and pagination support
 
 ## 🏗️ System Architecture
 
@@ -177,13 +180,13 @@ Based on testing with 3 groups:
 
 ## 🔧 Technology Stack
 
-- **Python**: 3.8+ (tested on 3.11.9)
-- **LINE API**: line-bot-sdk 2.18.0+
-- **AI**: Anthropic Claude API
+- **Python**: 3.8+ (tested on 3.13.12)
+- **LINE API**: line-bot-sdk 3.22.0+ (v3.0 with modern API)
+- **AI**: Anthropic Claude API (latest)
 - **Async**: asyncio (stdlib)
-- **Scheduling**: schedule 1.2.0
+- **Scheduling**: schedule 1.2.0+
 - **Text Processing**: jieba (Chinese tokenization)
-- **Testing**: pytest, pytest-asyncio
+- **Testing**: pytest 7.4.3+, pytest-asyncio 0.21.1+
 - **Environment**: python-dotenv
 
 ## 📁 Project Structure
