@@ -1,8 +1,10 @@
 # LINE Message Daily Summary System
 
+[![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational.svg)](https://github.com/Hayatelin/line_message_summarizer/releases/tag/v1.1.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Tests: 67 Passing](https://img.shields.io/badge/Tests-67%20Passing-brightgreen.svg)](#testing)
+[![SDK: v3.0](https://img.shields.io/badge/LINE%20SDK-v3.0+-success.svg)](https://github.com/line/line-bot-sdk-python)
 
 An intelligent 4-Agent system that automatically crawls LINE group messages, processes them, generates AI-powered summaries, and sends them daily via LINE messaging.
 
@@ -324,6 +326,24 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [LINE Bot SDK (Python)](https://github.com/line/line-bot-sdk-python)
 - [jieba Chinese Tokenization](https://github.com/fxsjy/jieba)
 
+## 📋 Version History
+
+| Version | Date | Highlights |
+|---------|------|-----------|
+| **v1.1.0** ⭐ | 2026-02-18 | LINE Bot SDK v3.0 migration, improved pagination, full type hints, all 67 tests passing |
+| v1.0.0 | 2026-02-18 | Complete 4-Agent system (Crawler, Processor, Summarizer, Scheduler), 67 unit tests |
+
+### What's New in v1.1.0
+- **LINE Bot SDK v3.0**: Migrated from deprecated v2 to modern v3.0+ API
+- **Pagination Support**: Better handling of large group member lists with token-based pagination
+- **Type Safety**: Full type hints with Pydantic v2 validation
+- **Quality**: All 67 tests passing, zero deprecation warnings
+- **Documentation**: Updated README, added requirements.txt
+
+For detailed release notes, see [GitHub Releases](https://github.com/Hayatelin/line_message_summarizer/releases)
+
+---
+
 ## 📞 Support
 
 For issues, questions, or suggestions:
@@ -335,4 +355,4 @@ For issues, questions, or suggestions:
 
 **Built with ❤️ using Claude AI**
 
-Made by Hayatelin | Last updated: 2026-02-18
+Made by Hayatelin | Last updated: 2026-02-18 | Current Version: v1.1.0

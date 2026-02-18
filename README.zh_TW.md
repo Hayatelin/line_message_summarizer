@@ -1,8 +1,10 @@
 # LINE 訊息每日摘要系統
 
+[![版本: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational.svg)](https://github.com/Hayatelin/line_message_summarizer/releases/tag/v1.1.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![測試: 67 個通過](https://img.shields.io/badge/Tests-67%20Passing-brightgreen.svg)](#測試)
+[![SDK: v3.0](https://img.shields.io/badge/LINE%20SDK-v3.0+-success.svg)](https://github.com/line/line-bot-sdk-python)
 
 一個智能化的 4-Agent 系統，可自動爬蟲 LINE 群組訊息、進行處理、使用 AI 生成摘要，並每天透過 LINE 自動發送。
 
@@ -324,6 +326,24 @@ pytest tests/test_scheduler.py::TestLineSender -v
 - [LINE Bot SDK (Python)](https://github.com/line/line-bot-sdk-python)
 - [jieba 中文分詞](https://github.com/fxsjy/jieba)
 
+## 📋 版本歷史
+
+| 版本 | 日期 | 主要更新 |
+|------|------|---------|
+| **v1.1.0** ⭐ | 2026-02-18 | LINE Bot SDK v3.0 遷移、改進分頁支持、完整型別提示、67 個測試通過 |
+| v1.0.0 | 2026-02-18 | 完整的 4-Agent 系統（爬蟲、處理、摘要、排程），67 個單元測試 |
+
+### v1.1.0 的新增功能
+- **LINE Bot SDK v3.0**：從已棄用的 v2 遷移到現代化的 v3.0+ API
+- **分頁支持**：更好地處理大型群組成員列表，支援基於 token 的分頁
+- **型別安全**：使用 Pydantic v2 進行完整的型別提示和驗證
+- **品質提升**：所有 67 個測試通過，無任何棄用警告
+- **文檔更新**：更新 README、新增 requirements.txt
+
+詳細發佈說明請查看 [GitHub Releases](https://github.com/Hayatelin/line_message_summarizer/releases)
+
+---
+
 ## 📞 支援
 
 如有問題、疑問或建議：
@@ -335,4 +355,4 @@ pytest tests/test_scheduler.py::TestLineSender -v
 
 **使用 ❤️ 和 Claude AI 打造**
 
-作者：Hayatelin | 最後更新：2026-02-18
+作者：Hayatelin | 最後更新：2026-02-18 | 目前版本：v1.1.0
